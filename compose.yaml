@@ -1,0 +1,17 @@
+version: '3'
+services:
+  node-app:
+    image: simonhtec/hello
+    build: .
+    ports:
+      - "3000:3000"
+  mongo:
+    image: mongo
+    volumes:
+      - hello-v:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+volumes:
+  hello-v:
