@@ -12,11 +12,11 @@ on:
         required: true
 
 env:
-  ENVIRONMENT: ${{ inputs.environment }}
+  TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || (inputs.environment == 'prod' && 'tmp-prod' || tmp-stage) }}
 
 jobs:
   hello:
     name: Hello job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello job in env=$ENVIRONMENT, $RUNNER_OS!"
+      - run: echo "Hello job in env=$ENVIRONMENT!"
