@@ -12,7 +12,7 @@ on:
         required: true
 
 env:
-  TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || (inputs.environment == 'prod' && 'tmp-prod' || tmp-stage) }}
+  TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || (inputs.environment == 'prod' && 'tmp-prod' || 'tmp-stage') }}
 
 jobs:
   hello:
