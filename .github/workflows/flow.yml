@@ -9,10 +9,14 @@ on:
       environment:
         description: 'Choose environment'
         type: environment
-        required: true 
+        required: true
+
+env:
+  ENVIRONMENT: ${{ inputs.environment }}
 
 jobs:
   hello:
+    name: Hello job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello workflow!"
+      - run: echo "Hello job in env $ENVIRONMENT!"
