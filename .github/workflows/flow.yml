@@ -19,4 +19,4 @@ jobs:
     name: Hello job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello job in env $ENVIRONMENT!"
+      - run: echo "Hello job in env=$ENVIRONMENT, $RUNNER_OS!"
