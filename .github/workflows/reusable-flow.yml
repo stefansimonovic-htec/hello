@@ -9,7 +9,7 @@ on:
         required: true
 
 env:
-  BUILD_NUMBER: ${{ env.GITHUB_RUN_NUMBER }}
+  BUILD_NUMBER: $GITHUB_RUN_NUMBER
 
 jobs:
   build:
