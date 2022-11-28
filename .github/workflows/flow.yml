@@ -16,7 +16,7 @@ env:
 
 jobs:
   be-setup-dev:
-    name: Hello job
+    name: Hello dev job
     runs-on: ubuntu-latest
     environment: dev
     env:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup be parameters
         run: echo "Hello dev job in env=$TMP!"
   be-setup-prod:
-    name: Hello job
+    name: Hello prod job
     runs-on: ubuntu-latest
     environment: prod
     env:
