@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - './github/**'
+      - './github/workflow/flow.yml'
   workflow_dispatch:
     inputs:
       environment:
