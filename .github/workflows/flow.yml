@@ -17,17 +17,21 @@ jobs:
     if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     runs-on: ubuntu-latest
     env:
-      TMP: tmp-dev
+      environment: dev
     steps:
-      - name: Setup be parameters
-        run: echo "Hello dev job in env=$TMP!"
+      - name: Build and deploy DEV environment
+        uses: ./.github/workflows/reusable-flow.yml
+        with:
+          environment: ${{ env.environment }}
   be-setup-prod:
     name: Hello prod job
     if: inputs.environment == 'prod'
     runs-on: ubuntu-latest
     environment: prod
     env:
-      TMP: tmp-prod
+      environment: prod
     steps:
-      - name: Setup be parameters
-        run: echo "Hello prod job in env=$TMP!"
+      - name: Build and deploy DEV environment
+        uses: ./.github/workflows/reusable-flow.yml
+        with:
+          environment: ${{ env.environment }}

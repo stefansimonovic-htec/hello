@@ -4,13 +4,13 @@ on:
   workflow_call:
     inputs:
       environment:
-        description: 'Choose environment'
-        type: environment
+        type: string
+        default: 'dev'
         required: true
 
 jobs:
   build:
-    name: Hello job
+    name: Reusable job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello job in env=$ENVIRONMENT!"
+      - run: echo "Hello reusable job in ${{ inputs.environment }} environment!"
