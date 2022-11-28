@@ -8,6 +8,9 @@ on:
         default: 'dev'
         required: true
 
+env:
+  BUILD_NUMBER: ${{ GITHUB_RUN_NUMBER }}
+
 jobs:
   build:
     name: Reusable job
@@ -15,4 +18,5 @@ jobs:
     steps:
       - run: |
           echo "Hello reusable job in ${{ inputs.environment }} environment!"
-          echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}}"
+          echo "BUILD_NUMBER=${BUILD_NUMBER}"
+          echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}"
