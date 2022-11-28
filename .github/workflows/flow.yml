@@ -19,8 +19,8 @@ jobs:
     name: Hello dev job
     runs-on: ubuntu-latest
     # environment: dev
-    env:
-      TMP: tmp-dev
+    # env:
+    #   TMP: tmp-dev
     steps:
       - name: Setup be parameters
         run: echo "Hello dev job in env=$TMP!"
