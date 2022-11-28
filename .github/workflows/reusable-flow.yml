@@ -15,4 +15,4 @@ jobs:
     steps:
       - run: |
         echo "Hello reusable job in ${{ inputs.environment }} environment!"
-        echo "GITHUB_RUN_ID=GITHUB_RUN_ID, GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+        echo "GITHUB_RUN_ID=${{ env.GITHUB_RUN_ID }}, GITHUB_RUN_NUMBER=${{ env.GITHUB_RUN_NUMBER }}"
