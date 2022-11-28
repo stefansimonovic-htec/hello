@@ -14,7 +14,7 @@ on:
 jobs:
   be-setup-dev:
     name: Hello dev job
-    if: inputs.environment == ''
+    if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     runs-on: ubuntu-latest
     env:
       TMP: tmp-dev
