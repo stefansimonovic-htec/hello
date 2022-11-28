@@ -11,21 +11,22 @@ on:
   #       type: environment
   #       required: true
 
-env:
-  TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || 'tmp-prod' }}
+# env:
+#   TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || 'tmp-prod' }}
 
 jobs:
   be-setup-dev:
     name: Hello dev job
+    if: inputs.environment == ''
     runs-on: ubuntu-latest
-    # environment: dev
-    # env:
-    #   TMP: tmp-dev
+    env:
+      TMP: tmp-dev
     steps:
       - name: Setup be parameters
         run: echo "Hello dev job in env=$TMP!"
   be-setup-prod:
     name: Hello prod job
+    if: inputs.environment == 'prod'
     runs-on: ubuntu-latest
     environment: prod
     env:
