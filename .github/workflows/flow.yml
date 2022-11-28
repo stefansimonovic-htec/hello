@@ -18,7 +18,7 @@ jobs:
   be-setup-dev:
     name: Hello dev job
     runs-on: ubuntu-latest
-    environment: dev
+    # environment: dev
     env:
       TMP: tmp-dev
     steps:
