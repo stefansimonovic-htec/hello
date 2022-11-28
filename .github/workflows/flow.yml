@@ -13,9 +13,14 @@ on:
 
 jobs:
   be-setup-dev:
+    name: Hello dev job
+    # if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
+    # runs-on: ubuntu-latest
+    # env:
+    #   environment: dev
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: 'dev'
+      environment: 'dev'  
   # be-setup-prod:
   #   name: Hello prod job
   #   if: inputs.environment == 'prod'
