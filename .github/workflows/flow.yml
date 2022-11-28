@@ -19,7 +19,7 @@ jobs:
       environment: dev
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: ${{ env.environment }}  
+      environment: '${{ env.environment }}'  
   # be-setup-prod:
   #   name: Hello prod job
   #   if: inputs.environment == 'prod'
