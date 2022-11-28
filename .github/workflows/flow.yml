@@ -13,23 +13,16 @@ on:
 
 jobs:
   be-setup-dev:
-    name: Hello dev job
     if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
-    # runs-on: ubuntu-latest
-    env:
-      environment: dev
+    name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: 'dev'  
-  # be-setup-prod:
-  #   name: Hello prod job
-  #   if: inputs.environment == 'prod'
-  #   runs-on: ubuntu-latest
-  #   environment: prod
-  #   env:
-  #     environment: prod
-  #   steps:
-  #     - name: Build and deploy DEV environment
-  #       uses: ./.github/workflows/reusable-flow.yml
-  #       with:
-  #         environment: ${{ env.environment }}
+      environment: 'dev'
+  be-setup-prod:
+    if: inputs.environment == 'prod'
+    name: Hello prod job
+    uses: ./.github/workflows/reusable-flow.yml
+    with:
+      environment: 'prod'
+
+    
