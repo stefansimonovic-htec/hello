@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: simonhtec/hello
+          image: simonhtec/hello 
           ports:
             - containerPort: 3000
 

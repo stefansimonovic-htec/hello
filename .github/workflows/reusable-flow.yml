@@ -1,0 +1,16 @@
+name: Hello reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Choose environment'
+        type: environment
+        required: true
+
+jobs:
+  build:
+    name: Hello job
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello job in env=$ENVIRONMENT!"
