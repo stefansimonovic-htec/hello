@@ -16,8 +16,8 @@ jobs:
     name: Hello dev job
     if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     # runs-on: ubuntu-latest
-    # env:
-    #   environment: dev
+    env:
+      environment: dev
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'  
