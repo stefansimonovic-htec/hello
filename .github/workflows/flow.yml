@@ -4,12 +4,33 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    branches:
       - prod
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose environment'
+        type: environment
+        required: true
+
+env:
+  TMP: ${{ inputs.environment == 'dev' && 'tmp-dev' || 'tmp-prod' }}
 
 jobs:
-  hello:
+  be-setup-dev:
+    name: Hello job
     runs-on: ubuntu-latest
+    environment: dev
+    env:
+      TMP: tmp-dev
     steps:
-      - run: echo "Hello workflow!"
+      - name: Setup be parameters
+        run: echo "Hello dev job in env=$TMP!"
+  be-setup-prod:
+    name: Hello job
+    runs-on: ubuntu-latest
+    environment: prod
+    env:
+      TMP: tmp-prod
+    steps:
+      - name: Setup be parameters
+        run: echo "Hello prod job in env=$TMP!"
