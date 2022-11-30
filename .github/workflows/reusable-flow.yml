@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          sleep 1m
           echo "Hello reusable job in ${{ inputs.environment }} environment!"
           echo "BUILD_NUMBER=${BUILD_NUMBER}"
           echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}"
