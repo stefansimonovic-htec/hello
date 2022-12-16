@@ -12,6 +12,9 @@ concurrency:
   group: ${{ inputs.environment }}
   cancel-in-progress: true
 
+env:
+  TMP: ${{ inputs.environment }}latest
+
 jobs:
   build:
     name: Reusable job
@@ -26,3 +29,4 @@ jobs:
             cd ./$settings
             echo 'Tmp ${{ inputs.environment }} '
           fi
+          echo $TMP
