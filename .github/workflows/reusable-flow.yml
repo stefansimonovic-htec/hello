@@ -20,7 +20,9 @@ jobs:
       - run: |
           echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}"
           if [ ${{ inputs.environment }} != tmp ]; then
-            settings=$([ ${{ inputs.environment }} == dev ] && echo dev || echo prod)
+            settings=$([ ${{ inputs.environment }} == dev ] && echo 'dev' || echo 'prod')
             mkdir $settings
+            ls
+            cd ./$settings
             ls
           fi
