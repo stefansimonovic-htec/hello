@@ -18,7 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Hello reusable job in ${{ inputs.environment }} environment!"
-          echo "BUILD_NUMBER=${BUILD_NUMBER}"
           echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}"
-          docker ps
+          if [ ${{ inputs.environment }} == dev ]; then
+            echo "if dev"
+          elif [ ${{ inputs.environment }} == prod ]; then
+            echo "if prod"
