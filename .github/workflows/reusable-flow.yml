@@ -21,6 +21,7 @@ jobs:
           echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}, GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}"
           if [ ${{ inputs.environment }} == dev ]; then
             echo "if dev"
+            echo "if devv"
           elif [ ${{ inputs.environment }} == prod ]; then
             echo "if prod"
           fi
