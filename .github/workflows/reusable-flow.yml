@@ -15,6 +15,10 @@ concurrency:
 env:
   TMP: ${{ inputs.environment }}latest
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     name: Reusable job
