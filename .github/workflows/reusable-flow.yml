@@ -34,7 +34,13 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Build and push Docker Image to Amazon ECR
+      # - name: Build and push Docker image to Amazon ECR
+      #   run: |
+      #     docker build -t hello -t 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest .
+      #     docker push 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest
+      - name: Build docker image
         run: |
-          docker build -t hello -t 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest .
-          docker push 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest
+          docker images
+          docker build -t hello
+      - name: Check docker image
+        run: docker images
