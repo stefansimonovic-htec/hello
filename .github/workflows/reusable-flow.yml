@@ -8,9 +8,9 @@ on:
         default: 'dev'
         required: true
 
-concurrency:
-  group: ${{ inputs.environment }}
-  cancel-in-progress: true
+# concurrency:
+#   group: ${{ inputs.environment }}
+#   cancel-in-progress: true
 
 env:
   TMP: ${{ inputs.environment }}latest
@@ -20,27 +20,37 @@ permissions:
   contents: read
 
 jobs:
+  tmp:
+    name: Tmp sleep
+    runs-on: ubuntu-latest
+    concurrency:
+      group: test-${{ inputs.environment }}
+      cancel-in-progress: true
+    steps:
+      - runs: sleep 30s
   build:
     name: Reusable job
     runs-on: ubuntu-latest
+    concurrency: build-${{ inputs.environment }}
     steps:
+      - runs: sleep 30s
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::557104287276:role/GitHubECRRole
-          aws-region: eu-central-1
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     role-to-assume: arn:aws:iam::557104287276:role/GitHubECRRole
+      #     aws-region: eu-central-1
+      # - name: Login to Amazon ECR
+      #   id: login-ecr
+      #   uses: aws-actions/amazon-ecr-login@v1
       # - name: Build and push Docker image to Amazon ECR
       #   run: |
       #     docker build -t hello -t 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest .
       #     docker push 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest
-      - name: Build docker image
-        run: |
-          docker images
-          docker build -t hello .
-      - name: Check docker image
-        run: docker images
+      # - name: Build docker image
+      #   run: |
+      #     docker images
+      #     docker build -t hello .
+      # - name: Check docker image
+      #   run: docker images
