@@ -27,13 +27,13 @@ jobs:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
     steps:
-      - runs: sleep 30s
+      - run: sleep 30s
   build:
     name: Reusable job
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
     steps:
-      - runs: sleep 30s
+      - run: sleep 30s
       - name: Checkout repo
         uses: actions/checkout@v3
       # - name: Configure AWS credentials
