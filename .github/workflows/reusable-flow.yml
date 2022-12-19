@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   tmp:
-    name: Tmp sleep
+    name: Tmp sleep 1
     runs-on: ubuntu-latest
     concurrency:
       group: test-${{ inputs.environment }}
