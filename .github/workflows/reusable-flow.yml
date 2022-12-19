@@ -21,19 +21,20 @@ permissions:
 
 jobs:
   tmp:
-    name: Tmp sleep 1
+    name: Tmp sleep
     runs-on: ubuntu-latest
     concurrency:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
     steps:
-      - run: sleep 30s
+      - run: sleep 20s
   build:
+    needs: tmp
     name: Reusable job
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
     steps:
-      - run: sleep 30s
+      - run: sleep 50s
       - name: Checkout repo
         uses: actions/checkout@v3
       # - name: Configure AWS credentials
