@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
     steps:
-      - run: sleep 50s
+      - run: sleep 80s
       - name: Checkout repo
         uses: actions/checkout@v3
       # - name: Configure AWS credentials
