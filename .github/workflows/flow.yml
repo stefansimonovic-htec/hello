@@ -14,13 +14,14 @@ on:
         required: true
 
 jobs:
-  environment: dev
-  env:
-    ECR_ROLE: ${{ secrets.ECR_ROLE }}
+  
   tmp:
+    environment: dev
+    env:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
     steps:
-    - name: Dump ECR_ROLE
-      run: echo ECR_ROLE is $ECR_ROLE
+      - name: Dump ECR_ROLE
+        run: echo ECR_ROLE is $ECR_ROLE
 
 
   # be-setup-dev:
