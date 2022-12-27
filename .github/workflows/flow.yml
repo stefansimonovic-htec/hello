@@ -14,12 +14,13 @@ on:
         required: true
 
 jobs:
-  env:
-    ECR_ROLE: ${{ secrets.TMP }}
   tmp:
+    runs-on: ubuntu-latest
+    env:
+      ECR_ROLE: ${{ secrets.TMP }}
     steps:
-    - name: Dump TMP
-      run: echo TMP is $TMP
+      - name: Dump TMP
+        run: echo TMP is $TMP
 
 
   # be-setup-dev:
