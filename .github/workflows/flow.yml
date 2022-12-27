@@ -22,6 +22,7 @@ jobs:
       - name: Dump TMP
         run: |
           echo TMP is $TMP
+          echo tmp = ${{ secrets.TMP }}
           echo env
 
 
