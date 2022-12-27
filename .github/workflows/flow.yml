@@ -20,7 +20,9 @@ jobs:
       ECR_ROLE: ${{ secrets.TMP }}
     steps:
       - name: Dump TMP
-        run: echo TMP is $TMP
+        run: |
+          echo TMP is $TMP
+          echo env
 
 
   # be-setup-dev:
