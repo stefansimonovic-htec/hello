@@ -7,9 +7,12 @@ on:
         type: string
         default: 'dev'
         required: true
-      ecr_role:
-        type: string
-        required: true  
+      # ecr_role:
+      #   type: string
+      #   required: true  
+    secrets:
+      ECR_ROLE:
+        required: true
 
 # concurrency:
 #   group: ${{ inputs.environment }}
@@ -42,7 +45,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ inputs.ecr_role }}
+          role-to-assume: ${{ secrets.ECR_ROLE }}
           aws-region: eu-central-1
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
