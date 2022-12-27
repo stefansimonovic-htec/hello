@@ -27,7 +27,7 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'
-      ecr_role: 'arn:aws:iam::557104287276:role/GitHubECRRole'
+      ecr_role: ${{ secrets.ECR_ROLE }}
   be-setup-prod:
     if: inputs.environment == 'prod'
     name: Hello prod job
