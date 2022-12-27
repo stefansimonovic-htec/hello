@@ -28,6 +28,6 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'prod'
-      ecr_role: 'arn:aws:iam::557104287276:role/GitHubECRRole'
-
+    secrets:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
     
