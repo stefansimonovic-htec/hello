@@ -37,6 +37,7 @@ jobs:
   build:
     # needs: tmp
     name: Reusable job
+    environment: inputs.environment
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
     steps:
