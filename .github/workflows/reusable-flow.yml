@@ -27,7 +27,7 @@ jobs:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
     steps:
-      - run: sleep 20s
+      - run: echo ${{ secrets.MY_SECRET }}
   build:
     needs: tmp
     name: Reusable job
