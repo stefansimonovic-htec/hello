@@ -14,22 +14,17 @@ on:
         required: true
 
 jobs:
-  tmp:
-    runs-on: ubuntu-latest
-    env:
-        MY_SECRET: ${{ secrets.MY_SECRET }}
-    steps:
-      - run: echo "Secret is = $MY_SECRET"
   be-setup-dev:
-    needs: tmp
-    if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
+    environment: dev
+    #if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'
       ecr_role: ''
   be-setup-prod:
-    if: inputs.environment == 'prod'
+    environment: prod
+    #if: inputs.environment == 'prod'
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:

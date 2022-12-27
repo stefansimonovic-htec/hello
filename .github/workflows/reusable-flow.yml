@@ -23,16 +23,16 @@ permissions:
   contents: read
 
 jobs:
-  tmp:
-    name: Tmp sleep 4
-    runs-on: ubuntu-latest
-    concurrency:
-      group: test-${{ inputs.environment }}
-      cancel-in-progress: true
-    steps:
-      - run: echo "tmp"
+  # tmp:
+  #   name: Tmp sleep 4
+  #   runs-on: ubuntu-latest
+  #   concurrency:
+  #     group: test-${{ inputs.environment }}
+  #     cancel-in-progress: true
+  #   steps:
+  #     - run: echo "tmp"
   build:
-    needs: tmp
+    # needs: tmp
     name: Reusable job
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
