@@ -15,16 +15,15 @@ on:
 
 jobs:
   be-setup-dev:
-    environment: dev
-    #if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
+    needs: tmp
+    if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'
-      ecr_role: ''
+      ecr_role: ${{ secrets.ECR_ROLE }}
   be-setup-prod:
-    environment: prod
-    #if: inputs.environment == 'prod'
+    if: inputs.environment == 'prod'
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:
