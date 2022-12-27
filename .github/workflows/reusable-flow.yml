@@ -27,7 +27,7 @@ jobs:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
     steps:
-      - run: echo "Secret is = $MY_SECRET"
+      - run: echo "tmp"
   build:
     needs: tmp
     name: Reusable job
