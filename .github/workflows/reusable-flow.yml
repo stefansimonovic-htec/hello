@@ -39,14 +39,17 @@ jobs:
     name: Reusable job
     runs-on: ubuntu-latest
     concurrency: build-${{ inputs.environment }}
+    env:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.ECR_ROLE }}
+          role-to-assume: $ECR_ROLE
           aws-region: eu-central-1
+        env: 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
       # - name: Build and push Docker image to Amazon ECR
