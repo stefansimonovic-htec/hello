@@ -16,6 +16,8 @@ on:
 jobs:
   tmp:
     runs-on: ubuntu-latest
+    env:
+        MY_SECRET: ${{ secrets.MY_SECRET }}
     steps:
       - run: echo "Secret is = $MY_SECRET"
   be-setup-dev:
