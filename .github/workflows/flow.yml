@@ -16,6 +16,8 @@ on:
 jobs:
   
   tmp:
+    name: Tmp
+    runs-on: ubuntu-latest
     environment: dev
     env:
       ECR_ROLE: ${{ secrets.ECR_ROLE }}
