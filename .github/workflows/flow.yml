@@ -21,7 +21,7 @@ jobs:
     with:
       environment: 'dev'
     secrets:
-      ECR_ROLE: ${{ secrets.ECR_ROLE }}
+      ECR_ROLE: 'arnnnnn'
   be-setup-prod:
     if: inputs.environment == 'prod'
     name: Hello prod job
