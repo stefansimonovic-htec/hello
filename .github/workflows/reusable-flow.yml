@@ -38,7 +38,7 @@ jobs:
     # needs: tmp
     name: Reusable jobs
     runs-on: ubuntu-latest
-    environment: dev # {{ inputs.environment }}
+    environment: ${{ inputs.environment }}
     concurrency: build-${{ inputs.environment }}
     steps:
       - name: Checkout repo
