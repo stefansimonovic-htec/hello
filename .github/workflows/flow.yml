@@ -32,14 +32,14 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'
-    # secrets:
-    #   ECR_ROLE: ${{ secrets.ECR_ROLE }}
+    secrets:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
   be-setup-prod:
     if: inputs.environment == 'prod'
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'prod'
-    # secrets:
-    #   ECR_ROLE: ${{ secrets.ECR_ROLE }}
+    secrets:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
     
