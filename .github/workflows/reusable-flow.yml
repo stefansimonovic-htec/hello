@@ -36,9 +36,9 @@ jobs:
   #     - run: echo "tmp"
   build:
     # needs: tmp
-    name: Reusable job
-    environment: {{ inputs.environment }}
+    name: Reusable jobs
     runs-on: ubuntu-latest
+    environment: dev # {{ inputs.environment }}
     concurrency: build-${{ inputs.environment }}
     steps:
       - name: Checkout repo
