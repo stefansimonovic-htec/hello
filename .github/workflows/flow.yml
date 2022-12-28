@@ -14,33 +14,32 @@ on:
         required: true
 
 jobs:
+
   tmp:
     runs-on: ubuntu-latest
     env:
-      TMP: ${{ secrets.TMP }}
+      TMP: ${{ secrets.ECR_ROLE }}
     steps:
-      - name: Dump TMP
+      - name: Dump ECR_ROLE
         run: |
-          echo TMP is $TMP
-          echo tmp = ${{ secrets.TMP }}
-          echo env
+          echo ECR_ROLE is $ECR_ROLE
+          echo ECR_ROLE = ${{ secrets.ECR_ROLE }}
 
 
-  # be-setup-dev:
-  #   # if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
-  #   name: Hello dev job
-  #   uses: ./.github/workflows/reusable-flow.yml
-  #   with:
-  #     environment: 'dev'
-  #   secrets:
-  #     ECR_ROLE: ${{ secrets.ECR_ROLE }}
-  #   # secrets: inherit
-  # be-setup-prod:
-  #   # if: inputs.environment == 'prod'
-  #   name: Hello prod job
-  #   uses: ./.github/workflows/reusable-flow.yml
-  #   with:
-  #     environment: 'prod'
-  #   secrets:
-  #     ECR_ROLE: ${{ secrets.ECR_ROLE }}
+  be-setup-dev:
+    # if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
+    name: Hello dev job
+    uses: ./.github/workflows/reusable-flow.yml
+    with:
+      environment: 'dev'
+    secrets:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
+  be-setup-prod:
+    if: inputs.environment == 'prod'
+    name: Hello prod job
+    uses: ./.github/workflows/reusable-flow.yml
+    with:
+      environment: 'prod'
+    secrets:
+      ECR_ROLE: ${{ secrets.ECR_ROLE }}
     
