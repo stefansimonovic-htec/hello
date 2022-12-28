@@ -10,9 +10,9 @@ on:
       # ecr_role:
       #   type: string
       #   required: true  
-    secrets:
-      ECR_ROLE:
-        required: true
+    # secrets:
+    #   ECR_ROLE:
+    #     required: true
 
 # concurrency:
 #   group: ${{ inputs.environment }}
