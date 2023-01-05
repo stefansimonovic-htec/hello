@@ -15,6 +15,7 @@ on:
 
 env:
   TMP: ${{ inputs.environment }}/${{ inputs.environment }}
+  TMP1: tmp1
 
 jobs:
 
@@ -27,7 +28,7 @@ jobs:
         run: |
           echo ECR_ROLE is $ECR_ROLE
           echo ECR_ROLE = ${{ secrets.ECR_ROLE }}
-          echo $TMP
+          echo $TMP $TMP1
 
 
   be-setup-dev:
