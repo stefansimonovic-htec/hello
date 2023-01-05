@@ -13,6 +13,9 @@ on:
         type: environment
         required: true
 
+env:
+  TMP: ${{ inputs.environment }}/${{ inputs.environment }}
+
 jobs:
 
   tmp:
@@ -24,6 +27,7 @@ jobs:
         run: |
           echo ECR_ROLE is $ECR_ROLE
           echo ECR_ROLE = ${{ secrets.ECR_ROLE }}
+          echo $TMP
 
 
   be-setup-dev:
