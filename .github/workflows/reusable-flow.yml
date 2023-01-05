@@ -15,24 +15,24 @@ on:
 #   group: ${{ inputs.environment }}
 #   cancel-in-progress: true
 
-# env:
-#   TMP: ${{ inputs.environment }}latest
+env:
+  TMP: ${{ inputs.environment }}/${{ inputs.environment }}
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  # tmp:
-  #   name: Tmp sleep 4
-  #   runs-on: ubuntu-latest
-  #   concurrency:
-  #     group: test-${{ inputs.environment }}
-  #     cancel-in-progress: true
-  #   steps:
-  #     - run: echo "tmp"
+  tmp:
+    name: Tmp sleep 4
+    runs-on: ubuntu-latest
+    concurrency:
+      group: test-${{ inputs.environment }}
+      cancel-in-progress: true
+    steps:
+      - run: echo $TMP
   build:
-    # needs: tmp
+    needs: tmp
     name: Reusable jobs
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
