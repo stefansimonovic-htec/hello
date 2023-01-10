@@ -6,7 +6,10 @@ on:
       environment:
         type: string
         default: 'dev'
-        required: true 
+        required: true
+      tmp:
+        type: string
+        required: false 
     secrets:
       ECR_ROLE:
         required: true
@@ -30,7 +33,9 @@ jobs:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
     steps:
-      - run: echo $TMP
+      - run: |
+          echo $TMP
+          echo tmp = ${{ inputs.tmp }}
   build:
     needs: tmp
     name: Reusable jobs
@@ -38,15 +43,15 @@ jobs:
     environment: ${{ inputs.environment }}
     concurrency: build-${{ inputs.environment }}
     steps:
-      # - name: Checkout repo
-      #   uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.ECR_ROLE }}
-          aws-region: eu-central-1  
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     role-to-assume: ${{ secrets.ECR_ROLE }}
+      #     aws-region: eu-central-1  
+      # - name: Login to Amazon ECR
+      #   uses: aws-actions/amazon-ecr-login@v1
       # - name: Build and push Docker image to Amazon ECR
       #   run: |
       #     docker build -t hello -t 557104287276.dkr.ecr.eu-central-1.amazonaws.com/hello:latest .
