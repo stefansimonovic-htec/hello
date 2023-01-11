@@ -33,7 +33,7 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: 'dev'
-      tmp: ${{ secrets.ECR_ROLE }}
+      tmp: '${{ secrets.ECR_ROLE }}'
     secrets:
       ECR_ROLE: ${{ secrets.ECR_ROLE }}
   be-setup-prod:
