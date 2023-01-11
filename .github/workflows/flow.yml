@@ -42,5 +42,5 @@ jobs:
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: 'prod'
+      environment: $ENVIRONMENT
     secrets: inherit
