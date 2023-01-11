@@ -31,14 +31,14 @@ jobs:
 
 
   be-setup-dev:
-    if: ${{ inputs.environment }} == 'dev'
+    if: ${{ $ENVIRONMENT == 'dev' }}
     name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
       environment: $ENVIRONMENT
     secrets: inherit
   be-setup-prod:
-    if: $ENVIRONMENT == 'prod'
+    if: ${{ $ENVIRONMENT == 'prod' }}
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:
