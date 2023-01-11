@@ -27,20 +27,20 @@ permissions:
   contents: read
 
 jobs:
-  tmp:
-    name: Tmp
-    runs-on: ubuntu-latest
-    concurrency:
-      group: test-${{ inputs.environment }}
-      cancel-in-progress: true
-    environment: ${{ inputs.environment }}
-    steps:
-      - run: |
-          echo $TMP
-          echo $SECRET
-          echo tmp = ${{ inputs.tmp }}
+  # tmp:
+  #   name: Tmp
+  #   runs-on: ubuntu-latest
+  #   concurrency:
+  #     group: test-${{ inputs.environment }}
+  #     cancel-in-progress: true
+  #   environment: ${{ inputs.environment }}
+  #   steps:
+  #     - run: |
+  #         echo $TMP
+  #         echo $SECRET
+  #         echo tmp = ${{ inputs.tmp }}
   build:
-    needs: tmp
+    # needs: tmp
     name: Reusable jobs
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
@@ -57,7 +57,7 @@ jobs:
 
       - name: Deploy to AWS ECS
         run: |
-          aws ecs update-service --cluster ${{ inputs.ecs_cluster }} --service ${{ inputs.ecs_service }} --force-new-deployment
+          aws ecs update-service --cluster hello-cluster --service hello-service --force-new-deployment
           aws ecs wait servies-stable
 
       # - name: Login to Amazon ECR
