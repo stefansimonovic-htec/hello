@@ -9,7 +9,7 @@ on:
         required: true
       tmp:
         type: string
-        required: false 
+        required: false
     secrets:
       ECR_ROLE:
         required: true
@@ -20,6 +20,7 @@ on:
 
 env:
   TMP: ${{ inputs.environment }}/${{ inputs.environment }}
+  SECRET: ${{ secrets.ECR_ROLE }}
 
 permissions:
   id-token: write
@@ -35,6 +36,7 @@ jobs:
     steps:
       - run: |
           echo $TMP
+          echo $SECRET
           echo tmp = ${{ inputs.tmp }}
   build:
     needs: tmp
