@@ -31,7 +31,7 @@ jobs:
 
 
   be-setup-dev:
-    if: $ENVIRONMENT == 'dev'
+    if: ${{ inputs.environment }} == 'dev'
     name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
