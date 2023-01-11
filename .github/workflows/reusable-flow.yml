@@ -28,11 +28,12 @@ permissions:
 
 jobs:
   tmp:
-    name: Tmp sleep 4
+    name: Tmp
     runs-on: ubuntu-latest
     concurrency:
       group: test-${{ inputs.environment }}
       cancel-in-progress: true
+    environment: ${{ inputs.environment }}
     steps:
       - run: |
           echo $TMP
