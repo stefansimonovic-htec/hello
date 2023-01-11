@@ -58,7 +58,7 @@ jobs:
       - name: Deploy to AWS ECS
         run: |
           aws ecs update-service --cluster hello-cluster --service hello-service --force-new-deployment
-          aws ecs wait servies-stable
+          aws ecs wait services-stable
 
       # - name: Login to Amazon ECR
       #   uses: aws-actions/amazon-ecr-login@v1
