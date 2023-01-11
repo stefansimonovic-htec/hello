@@ -38,7 +38,7 @@ jobs:
   #         echo tmp = ${{ inputs.tmp }}
   build:
     # needs: tmp
-    name: Reusable job
+    name: Reusable jobs
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     concurrency: build-${{ inputs.environment }}
