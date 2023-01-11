@@ -46,13 +46,20 @@ jobs:
     environment: ${{ inputs.environment }}
     concurrency: build-${{ inputs.environment }}
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      # - name: Configure AWS credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     role-to-assume: ${{ secrets.ECR_ROLE }}
-      #     aws-region: eu-central-1  
+      # - name: Checkout repo
+      #   uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::557104287276:role/GitHubECSRole
+          # role-to-assume: ${{ secrets.ECR_ROLE }}
+          aws-region: eu-central-1  
+
+      - name: Deploy to AWS ECS
+        run: |
+          aws ecs update-service --cluster ${{ inputs.ecs_cluster }} --service ${{ inputs.ecs_service }} --force-new-deployment
+          aws ecs wait servies-stable
+
       # - name: Login to Amazon ECR
       #   uses: aws-actions/amazon-ecr-login@v1
       # - name: Build and push Docker image to Amazon ECR
