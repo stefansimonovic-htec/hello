@@ -13,8 +13,8 @@ on:
         type: environment
         required: true
 
-env:
-  ENVIRONMENT: ${{ inputs.environment == '' && 'dev' || inputs.environment  }}   
+# env:
+#   ENVIRONMENT: ${{ inputs.environment == '' && 'dev' || inputs.environment  }} 
 
 jobs:
 
@@ -31,16 +31,16 @@ jobs:
 
 
   be-setup-dev:
-    if: env.ENVIRONMENT == 'dev'
+    if: ${{ inputs.environment == '' || inputs.environment == 'dev' }}
     name: Hello dev job
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: $ENVIRONMENT
+      environment: 'dev'
     secrets: inherit
   be-setup-prod:
-    if: env.ENVIRONMENT == 'prod'
+    if: inputs.environment == 'prod'
     name: Hello prod job
     uses: ./.github/workflows/reusable-flow.yml
     with:
-      environment: $ENVIRONMENT
+      environment: 'prod'
     secrets: inherit
